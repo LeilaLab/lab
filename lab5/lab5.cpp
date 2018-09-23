@@ -20,10 +20,10 @@ int main(){
     int sum = 0;
 
     int j = 0;
-    int minscore;
-    int maxscore;
-    int min = 0;
-    int max = 0;
+    int minscore; //http://www.cplusplus.com/forum/beginner/84756/ check c++ built-in INT_MIN, INT_MAX
+    int maxscore; //http://www.cplusplus.com/forum/beginner/84756/ check c++ built-in INT_MIN, INT_MAX
+    int min = 0;  //better to name it as index_min or min_index
+    int max = 0;  //better to name it as index_max or max_index
     unsigned int i = 0;
 
 //begin
@@ -31,14 +31,23 @@ int main(){
         cout << "Enter player's name (done for no more players): ";
         cin >> pn;
         if(pn == "done"){
+
+            // you need to check whether vector players is empty, before print the line below
             cout << "No players were entered. \n";
-            return 0;
+            // Please check this link https://stackoverflow.com/questions/18422651/return-vs-break-when-closing-a-function
+            //return 0;// return means terminate the program;
+            break; // the following code after while loop will still run
         }
 
+        player_name.push_back(pn);
+
     }
-    player_name.push_back(pn);
+
+    //player_name.push_back(pn);// this should be inside the while loop
 
 
+    //so does the for loop, it should be inside while loop
+    // if you set up the size of array as 21, means you are using the first space of the array, then here is the change
     for(int i = 1; i < 21; i++){
         cout << "Enter score for frame " << frame << ", roll " << roll_num << ": ";
         cin >> score;
@@ -79,9 +88,9 @@ int main(){
         roll[21] = score;
     }
 
-
+    //This is for calculation of scores
     for(int i = 1; i < 19; i +=2){
-        int frame_total = 0;
+        int frame_total = 0; // this has been declared earlier
 
         if(roll[i] == 10){
             frame_total += 10;
@@ -128,9 +137,11 @@ int main(){
 
     total_score.push_back(sum);
 
+    //There is no need to handle the case here, since we will handle it in the while loop
     if(player_name.empty() || total_score.empty()){
         return 0;
     }
+    //--------
 
     for(string pn: player_name){
         cout << pn << " scored " << total_score.at(j) << ". \n";
@@ -158,4 +169,3 @@ int main(){
 
     return 0;
 }
-
