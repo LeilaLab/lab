@@ -19,6 +19,9 @@ int main(){
         cout <<"Enter player's name (done for no more players): ";
         cin >> player;
         if(player == "done"){
+            if (players.empty()){
+                cout << "No players were entered.";
+            }
             break; //if input is "done", no need to continue, no need to insert to an array
         }
         players.push_back(player);
