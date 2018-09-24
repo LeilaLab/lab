@@ -21,6 +21,7 @@ int main(){
         if(player == "done"){
             if (players.empty()){
                 cout << "No players were entered.";
+                return 0;
             }
             break; //if input is "done", no need to continue, no need to insert to an array
         }
@@ -114,9 +115,6 @@ int main(){
 
     }
 
-    if(players.empty() || scores.empty()){
-        return 0;
-    }
 //Better to define a function here to print those records
     unsigned int j=0;
     for(string plr: players){
